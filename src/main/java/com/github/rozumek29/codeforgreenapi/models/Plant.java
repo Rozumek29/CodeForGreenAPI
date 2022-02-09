@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter @Setter
 public class Plant {
 
-    private String name;
+    private String polishName;
+    private String englishName;
+    private String latinName;
     private String description;
-
 }

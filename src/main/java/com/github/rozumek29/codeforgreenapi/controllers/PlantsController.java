@@ -11,16 +11,19 @@ public class PlantsController {
 
     List<Plant> plantList = new ArrayList<>();
 
+    @CrossOrigin("*")
     @GetMapping("/api/getallplants")
     public List<Plant> getAllPlants(){
         return this.plantList;
     }
 
+    @CrossOrigin("*")
     @PostMapping("/api/addPlant")
     public Boolean addPlant(@RequestBody Plant plant){
         return plantList.add(plant);
     }
 
+    @CrossOrigin("*")
     @GetMapping("/api/getPlantByIndex")
     public Plant getByIndex(@RequestParam int index){
         if (index > this.plantList.size()-1){
