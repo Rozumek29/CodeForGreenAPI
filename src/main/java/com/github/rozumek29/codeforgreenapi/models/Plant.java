@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import javax.persistence.*;
+import java.net.URL;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,4 +40,7 @@ public class Plant {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "img")
+    private String img;
 }
