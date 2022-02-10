@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/getallplants").permitAll()
                 .antMatchers("/api/getPlantByIndex").permitAll()
                 .antMatchers("/api/addPlant").hasRole("REDACTOR")
+                .antMatchers("/api/removePlantByIndex").hasRole("REDACTOR")
                 .and().formLogin().permitAll()
                 .and().logout().permitAll()
                 .and().csrf().disable();
