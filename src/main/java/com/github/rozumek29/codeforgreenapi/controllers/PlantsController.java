@@ -2,41 +2,35 @@ package com.github.rozumek29.codeforgreenapi.controllers;
 
 import com.github.rozumek29.codeforgreenapi.models.Plant;
 import com.github.rozumek29.codeforgreenapi.repository.PlantRepository;
+import com.github.rozumek29.codeforgreenapi.services.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RestController
 public class PlantsController {
 
     @Autowired
-    PlantRepository plantRepository;
+    PlantService service;
 
     @CrossOrigin("*")
-    @GetMapping("/api/getallplants")
+    @GetMapping("/api/getAllPlants")
     public Iterable<Plant> getAllPlants(){
-        return this.plantRepository.findAll();
-    }
-
-    @CrossOrigin("*")
-    @PostMapping("/api/addPlant")
-    public Boolean addPlant(@RequestBody Plant plant){
-        plantRepository.save(plant);
-        return true;
+        return this.service.findAll();
     }
 
     @CrossOrigin("*")
     @GetMapping("/api/getPlantById")
     public Optional<Plant> getById(@RequestParam(value = "id", required = true) long id){
-        return plantRepository.findById(id);
+        return this.service.findById(id);
     }
 
     @CrossOrigin("*")
-    @DeleteMapping("/api/removePlantById")
-    public Boolean removePlant(@RequestParam(value = "id", required = true) long id){
-        plantRepository.deleteById(id);
-        return true;
+    @GetMapping("/api/findByKeyword")
+    public Optional<Plant> findPlant(@RequestParam(value = "keyword", required = true) String keyword){
+        return this.service.search(keyword);
     }
 
 }

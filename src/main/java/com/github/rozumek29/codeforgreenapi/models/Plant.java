@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import javax.persistence.*;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,31 +18,39 @@ import java.net.URL;
 @Entity
 @Table(name = "plants")
 public class Plant {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "polishName")
     private String polishName;
-
-    @Column(name = "englishName")
-    private String englishName;
-
-    @Column(name = "latinName")
     private String latinName;
+    private String polishFamily;
+    private String latinFamily;
+    private String decorativeness;
+    private String plantUsage;
+    private String description;
+    @Column(insertable = false, updatable = false)
+    private String plant_type;
 
-    @Column(name = "origin")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "plant_id")
+    private List<PlantImage> images;
+
+    private String toxicity;
+    private String lightConditions;
+    private String subsoil;
+    private String watering;
+
+    private String sort;
+    private String height;
+    private String bark;
+    private String shoots;
+    private String leaves;
+    private String flowers_desc;
+    private LocalDate flowers_date;
+    private String fruits_desc;
+    private LocalDate fruits_date;
     private String origin;
 
-    @Column(name = "species")
-    private String species;
 
-    @Column(name = "family")
-    private String family;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "img")
-    private String img;
 }
