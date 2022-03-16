@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
 import java.net.URL;
@@ -47,10 +48,13 @@ public class Plant {
     private String shoots;
     private String leaves;
     private String flowers_desc;
-    private LocalDate flowers_date;
+    private String flowers_date;
     private String fruits_desc;
-    private LocalDate fruits_date;
+    private String fruits_date;
     private String origin;
+
+    private LocalDate published;
+    private String username;
 
 
 }
