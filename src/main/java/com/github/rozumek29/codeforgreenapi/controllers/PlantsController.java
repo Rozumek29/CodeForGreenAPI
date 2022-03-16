@@ -29,7 +29,7 @@ public class PlantsController {
 
     @CrossOrigin("*")
     @GetMapping("/api/findByKeyword")
-    public Optional<Plant> findPlant(@RequestParam(value = "keyword", required = true) String keyword){
+    public Iterable<Plant> findPlant(@RequestParam(value = "keyword", required = true) String keyword){
         return this.service.search(keyword);
     }
 

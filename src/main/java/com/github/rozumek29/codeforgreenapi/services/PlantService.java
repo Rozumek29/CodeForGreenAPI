@@ -13,7 +13,7 @@ public class PlantService{
     @Autowired
     PlantRepository repository;
 
-    public Optional<Plant> search(String keyword){
+    public Iterable<Plant> search(String keyword){
         return repository.findbyQuery(keyword);
     }
 
